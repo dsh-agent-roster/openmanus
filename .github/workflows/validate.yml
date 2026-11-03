@@ -18,5 +18,5 @@ jobs:
         run: npx --yes @stofone/dsh-agent-roster@^0.10.3 registry validate --file registry.json
       - name: compiled artifacts are in sync with their sources
         run: |
-          npx --yes @stofone/dsh-agent-roster@^0.10.3 compile --roster rosters/openmanus --write
+          npx --yes @stofone/dsh-agent-roster@^0.10.3 compile --roster rosters/openmanus --repo dsh-agent-roster/openmanus --write
           git diff --exit-code dist/

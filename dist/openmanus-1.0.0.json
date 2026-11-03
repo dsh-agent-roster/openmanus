@@ -4,8 +4,8 @@
     "roster": "openmanus",
     "version": "1.0.0",
     "title": "OpenManus 三件套（迁移）",
-    "repo": null,
-    "ref": null,
+    "repo": "dsh-agent-roster/openmanus",
+    "ref": "main",
     "lock": null,
     "file": "roster.yaml"
   },
