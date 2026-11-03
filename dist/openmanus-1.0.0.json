@@ -4,6 +4,17 @@
     "roster": "openmanus",
     "version": "1.0.0",
     "title": "OpenManus 三件套（迁移）",
+    "description": "把 OpenManus（5.8 万星，MIT）的三个代理提示词迁成档案：规划代理、编码代理、浏览器代理，systemPrompt 保留上游原文。",
+    "tags": [
+      "agent",
+      "browser",
+      "coding",
+      "openmanus"
+    ],
+    "license": "MIT",
+    "maintainers": [
+      "STofone"
+    ],
     "repo": "dsh-agent-roster/openmanus",
     "ref": "main",
     "lock": null,
