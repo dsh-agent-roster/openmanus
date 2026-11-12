@@ -117,6 +117,7 @@
     }
   ],
   "orchestration": null,
+  "handover": [],
   "declarations": [],
   "requires": {
     "skills": [],
