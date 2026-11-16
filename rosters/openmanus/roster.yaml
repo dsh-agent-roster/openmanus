@@ -2,7 +2,7 @@ kind: "dsh-agent-roster/roster@2"
 id: "openmanus"
 version: "1.0.0"
 title: "OpenManus 三件套（迁移）"
-description: "把 OpenManus（5.8 万星，MIT）的三个代理提示词迁成档案：规划代理、编码代理、浏览器代理，systemPrompt 保留上游原文。"
+description: "把 OpenManus（MIT）的三个代理提示词迁成档案：规划、编码、浏览器，systemPrompt 保留上游原文。"
 license: "MIT"
 maintainers:
   - "STofone"
@@ -11,6 +11,15 @@ tags:
   - "browser"
   - "coding"
   - "openmanus"
+captain:
+  role: "openmanus-planning-agent@1.0.0"
+handover:
+  - title: "三个 SYSTEM_PROMPT 是原文照搬，上游改版要重新对照"
+    detail: "正文没有改写；凭记忆修改会让档案与上游分叉。"
+    verify: "diff 上游 app/prompt/{planning,swe,browser}.py 的 SYSTEM_PROMPT 与 AGENT.md 正文"
+  - title: "换代时确认 planning-agent 仍是唯一拆解者"
+    detail: "上游的编排是一问一答的执行循环；这里只剩角色，循环由运行时负责。"
+    verify: "新会话首条消息写明「只有 planning-agent 拆任务」"
 targets:
   - "agent-teams/members"
 members:

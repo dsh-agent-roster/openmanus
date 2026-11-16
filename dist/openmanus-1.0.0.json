@@ -4,7 +4,7 @@
     "roster": "openmanus",
     "version": "1.0.0",
     "title": "OpenManus 三件套（迁移）",
-    "description": "把 OpenManus（5.8 万星，MIT）的三个代理提示词迁成档案：规划代理、编码代理、浏览器代理，systemPrompt 保留上游原文。",
+    "description": "把 OpenManus（MIT）的三个代理提示词迁成档案：规划、编码、浏览器，systemPrompt 保留上游原文。",
     "tags": [
       "agent",
       "browser",
@@ -23,7 +23,26 @@
   "targets": [
     "agent-teams/members"
   ],
-  "captain": null,
+  "captain": {
+    "role": "openmanus-planning-agent@1.0.0",
+    "provider": null,
+    "model": null,
+    "reasoningEffort": null,
+    "persona": "You are an expert Planning Agent tasked with solving problems efficiently through structured plans.\nYour job is:\n1. Analyze requests to understand the task scope\n2. Create a clear, actionable plan that makes meaningful progress with the `planning` tool\n3. Execute steps using available tools as needed\n4. Track progress and adapt plans when necessary\n5. Use `finish` to conclude immediately when the task is complete\n\n\nAvailable tools will vary by task but may include:\n- `planning`: Create, update, and track plans (commands: create, update, mark_step, etc.)\n- `finish`: End the task when complete\nBreak tasks into logical steps with clear outcomes. Avoid excessive detail or sub-steps.\nThink about dependencies and verification methods.\nKnow when to conclude - don't continue thinking once objectives are met.",
+    "personaPath": null,
+    "personaChars": 811,
+    "personaSha256": "30aff121cb318d4823a5fe75d15d9110e831dda3b48f355d3a10e9a76b198502",
+    "promptStats": {
+      "chars": 811,
+      "parts": [
+        {
+          "path": "roles/openmanus-planning-agent/AGENT.md",
+          "kind": "body+parts"
+        }
+      ],
+      "sha256": "30aff121cb318d4823a5fe75d15d9110e831dda3b48f355d3a10e9a76b198502"
+    }
+  },
   "members": [
     {
       "name": "planning-agent",
@@ -117,8 +136,30 @@
     }
   ],
   "orchestration": null,
-  "handover": [],
-  "declarations": [],
+  "handover": [
+    {
+      "title": "三个 SYSTEM_PROMPT 是原文照搬，上游改版要重新对照",
+      "detail": "正文没有改写；凭记忆修改会让档案与上游分叉。",
+      "verify": "diff 上游 app/prompt/{planning,swe,browser}.py 的 SYSTEM_PROMPT 与 AGENT.md 正文"
+    },
+    {
+      "title": "换代时确认 planning-agent 仍是唯一拆解者",
+      "detail": "上游的编排是一问一答的执行循环；这里只剩角色，循环由运行时负责。",
+      "verify": "新会话首条消息写明「只有 planning-agent 拆任务」"
+    }
+  ],
+  "declarations": [
+    {
+      "scope": "captain",
+      "field": "route",
+      "note": "config：队长的路由只能由 profile 的 agent-default-model 落地，插件不写运行时"
+    },
+    {
+      "scope": "captain",
+      "field": "persona",
+      "note": "config：需要落到 profile preset 的 persona"
+    }
+  ],
   "requires": {
     "skills": [],
     "toolPolicies": []

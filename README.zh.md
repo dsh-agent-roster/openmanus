@@ -9,7 +9,7 @@
 
 - 仓库：[`FoundationAgents/OpenManus`](https://github.com/FoundationAgents/OpenManus/tree/main/app/prompt)
 - 许可证：MIT
-- 星标：58,821
+- 星标：58,96821
 - 迁移范围：app/prompt/{planning,swe,browser}.py 的 SYSTEM_PROMPT；manus/toolcall 没有独立的 SYSTEM_PROMPT 常量，未迁。
 
 上游文本按原意保留；改动只有三处：字段名换成本档案格式、工具名映射到 DSH 工具名、

@@ -10,7 +10,7 @@ it on top of `dsh-agent-teams`.
 
 - Repo: [`FoundationAgents/OpenManus`](https://github.com/FoundationAgents/OpenManus/tree/main/app/prompt)
 - License: MIT
-- Stars: 58,821
+- Stars: 58,96821
 - Scope: the `SYSTEM_PROMPT` constants in `app/prompt/{planning,swe,browser}.py`; `manus` and `toolcall` have
   no standalone `SYSTEM_PROMPT` constant and are not migrated.
 
